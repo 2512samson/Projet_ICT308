@@ -3,6 +3,7 @@ module com.example.projet_ict308 {
     requires javafx.fxml;
     requires java.sql;
     requires TrayTester;
+    requires javafx.media;
 
 
     opens com.example.projet_ict308 to javafx.fxml;

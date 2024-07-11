@@ -62,10 +62,15 @@ public class CrudadminControllers implements Initializable {
 
     private int idQuestion;
 
+    @FXML
+    private ChoiceBox<String> niveauadmincb;
+
+    private final String[] niveau = {"Facile", "Moyen", "Difficile"};
     private DBConnection db = new DBConnection();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        niveauadmincb.getItems().addAll(niveau);
         loadTable();
     }
 
@@ -83,6 +88,7 @@ public class CrudadminControllers implements Initializable {
                 question.setFaurepo1(rs.getString("faurepo1"));
                 question.setFaurepo2(rs.getString("faurepo2"));
                 question.setFaurepo3(rs.getString("faurepo3"));
+                question.setNiveau(rs.getString("niveau"));
                 questions.add(question);
             }
             db.closeConnection();
@@ -91,6 +97,7 @@ public class CrudadminControllers implements Initializable {
         }
         return questions;
     }
+
     @FXML
     void clear(ActionEvent event) {
         clearFields();
@@ -132,12 +139,13 @@ public class CrudadminControllers implements Initializable {
         faussereponse1.setText(question.getFaurepo1());
         faussereponse2.setText(question.getFaurepo2());
         faussereponse3.setText(question.getFaurepo3());
+        niveauadmincb.setValue(question.getNiveau());
         enregistrerbtn.setDisable(true);
     }
 
     @FXML
     void save(ActionEvent event) {
-        String sql = "INSERT INTO question VALUES (NULL,?,?,?,?,?)";
+        String sql = "INSERT INTO question VALUES (NULL,?,?,?,?,?,?)";
         try {
             db.initPrepar(sql);
             db.getPstm().setString(1, question1.getText());
@@ -145,6 +153,7 @@ public class CrudadminControllers implements Initializable {
             db.getPstm().setString(3, faussereponse1.getText());
             db.getPstm().setString(4, faussereponse2.getText());
             db.getPstm().setString(5, faussereponse3.getText());
+            db.getPstm().setString(6, niveauadmincb.getValue());
             int ok = db.executeMaj();
             db.closeConnection();
             loadTable();
@@ -157,7 +166,7 @@ public class CrudadminControllers implements Initializable {
 
     @FXML
     void update(ActionEvent event) {
-        String sql = "UPDATE question SET libelle = ?, reponse = ?, faurepo1 = ?, faurepo2 = ?, faurepo3 = ? WHERE id = ?";
+        String sql = "UPDATE question SET libelle = ?, reponse = ?, faurepo1 = ?, faurepo2 = ?, faurepo3 = ?, niveau = ? WHERE id = ?";
         try {
             db.initPrepar(sql);
             db.getPstm().setString(1, question1.getText());
@@ -165,7 +174,8 @@ public class CrudadminControllers implements Initializable {
             db.getPstm().setString(3, faussereponse1.getText());
             db.getPstm().setString(4, faussereponse2.getText());
             db.getPstm().setString(5, faussereponse3.getText());
-            db.getPstm().setInt(6, idQuestion);
+            db.getPstm().setString(6, niveauadmincb.getValue());
+            db.getPstm().setInt(7, idQuestion);
             int ok = db.executeMaj();
             db.closeConnection();
             loadTable();
@@ -176,13 +186,16 @@ public class CrudadminControllers implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     void clearFields() {
         question1.setText("");
         reponse.setText("");
         faussereponse1.setText("");
         faussereponse2.setText("");
         faussereponse3.setText("");
+        niveauadmincb.setValue(null);
     }
+
     public void loadTable() {
         ObservableList<Question> liste = getQuestions();
         questiontb.setItems(liste);

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Sphere?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -25,30 +27,40 @@
                                 <Pane layoutX="-1.0" layoutY="3.0" prefHeight="612.0" prefWidth="241.0" style="-fx-background-color: #ffffff;">
                                     <children>
                                         <Sphere layoutX="112.0" layoutY="97.0" radius="50" />
-                                    <Text layoutX="121.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" wrappingWidth="118.45166015625">
-                                        <font>
-                                            <Font size="21.0" />
-                                        </font>
-                                    </Text>
-                              <Text layoutX="21.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez la réponse juste , parmi les quatre proposes en face." wrappingWidth="219.251708984375">
+                                        <Text layoutX="121.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" wrappingWidth="118.45166015625">
+                                            <font>
+                                                <Font size="21.0" />
+                                            </font>
+                                        </Text>
+                                        <Text layoutX="21.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez la réponse juste , parmi les quatre proposes en face." wrappingWidth="219.251708984375">
+                                            <font>
+                                                <Font size="21.0" />
+                                            </font>
+                                        </Text>
+                                        <ChoiceBox fx:id="niveaujeuxcb" layoutX="37.0" layoutY="573.0" prefWidth="150.0" style="-fx-background-color: grey;" />
+                              <Text layoutX="37.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau de Jeu" wrappingWidth="168.05166625976562">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
+                              <MediaView fx:id="media" fitHeight="200.0" fitWidth="200.0" layoutX="21.0" layoutY="329.0" />
                                     </children>
                                 </Pane>
                             </children>
                         </Pane>
                         <Button fx:id="Reponse4" layoutX="240.0" layoutY="510.0" mnemonicParsing="false" onAction="#Reponse4" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
                         <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="525.0" layoutY="204.0" prefHeight="17.0" prefWidth="258.0" textFill="#f70606" />
-                  <Button fx:id="Reponse3" layoutX="240.0" layoutY="417.0" mnemonicParsing="false" onAction="#Reponse3" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
-                  <Button fx:id="Reponse2" layoutX="240.0" layoutY="345.0" mnemonicParsing="false" onAction="#Reponse2" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
-                  <Button fx:id="Reponse1" layoutX="240.0" layoutY="266.0" mnemonicParsing="false" onAction="#Reponse1" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
-                  <TextArea fx:id="question" layoutX="257.0" layoutY="121.0" prefHeight="100.0" prefWidth="632.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font></TextArea>
-                  <Button fx:id="breakgame" layoutX="798.0" layoutY="568.0" mnemonicParsing="false" onAction="#Onbreack" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: red;" text="Arreter le jeux" textFill="WHITE" />
+                        <Button fx:id="Reponse3" layoutX="240.0" layoutY="417.0" mnemonicParsing="false" onAction="#Reponse3" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
+                        <Button fx:id="Reponse2" layoutX="240.0" layoutY="345.0" mnemonicParsing="false" onAction="#Reponse2" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
+                        <Button fx:id="Reponse1" layoutX="240.0" layoutY="266.0" mnemonicParsing="false" onAction="#Reponse1" prefHeight="30.0" prefWidth="649.0" style="-fx-background-color: blue;" textFill="WHITE" />
+                        <TextArea fx:id="question" layoutX="257.0" layoutY="121.0" prefHeight="100.0" prefWidth="632.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font></TextArea>
+                        <Button fx:id="breakgame" layoutX="798.0" layoutY="568.0" mnemonicParsing="false" onAction="#Onbreack" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: red;" text="Arreter le jeux" textFill="WHITE" />
+                        <Button fx:id="jouer" layoutX="255.0" layoutY="568.0" mnemonicParsing="false" onAction="#Onplaying" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: green;" text="Jouer" textFill="WHITE" />
+                        <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="300.0" layoutX="240.0" layoutY="600.0" />
+                  <Button fx:id="breakgame1" layoutX="807.0" layoutY="8.0" mnemonicParsing="false" onAction="#Onbreack1" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: red;" text="Retour" textFill="WHITE" />
                     </children>
                 </Pane>
             </children>
